@@ -1064,7 +1064,10 @@ class Renderer:
 
                 for subnode in node:
                     if subnode.tag == self.SVG_TSPAN:
-                        handleText(node, subnode, subnode.text.strip())
+                        if subnode.text is not None:
+                            handleText(node, subnode, subnode.text.strip())
+                        else:
+                            handleText(node, subnode, "")
 
                 self.level -= 1
 
