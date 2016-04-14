@@ -157,13 +157,13 @@ color_pattern = r"""
 
     (?P<rgbint>
         [rR][gG][bB]
-        \(
+        \(\s*
         (?P<rgbint_r>\d{1,3})
-        ,\s?
+        \s*,\s*
         (?P<rgbint_g>\d{1,3})
-        ,\s?
+        \s*,\s*
         (?P<rgbint_b>\d{1,3})
-        \)
+        \s*\)
     ) |
 
     (?P<rgb>

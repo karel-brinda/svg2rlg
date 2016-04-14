@@ -121,6 +121,9 @@ class test_svg2rlg(unittest.TestCase):
         self.assertTrue(parseColor('rgb(128,9,255)') == colors.Color(128/255.,9/255.,255/255.))
         self.assertTrue(parseColor('rgb(128, 9, 255)') == colors.Color(128/255.,9/255.,255/255.))
         self.assertTrue(parseColor('Rgb(128,9,255)') == colors.Color(128/255.,9/255.,255/255.))
+        # this color specification is not valid with respect to https://www.w3.org/TR/SVGColor12/#sRGBcolor,
+        # but it often appears in output of GnuPlot
+        self.assertTrue(parseColor('Rgb(  128 ,  9  ,   255  )') == colors.Color(128/255.,9/255.,255/255.))
         self.assertRaises(SVGError, parseColor, 'rgb(128,9,256)')
 
         self.assertTrue(parseColor('rgb(40%,90%,8%)') == colors.Color(40/100.,90/100.,8/100.))
